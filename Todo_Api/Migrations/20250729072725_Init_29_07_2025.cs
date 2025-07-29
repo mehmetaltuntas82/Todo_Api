@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Todo_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class mig2807251213 : Migration
+    public partial class Init_29_07_2025 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

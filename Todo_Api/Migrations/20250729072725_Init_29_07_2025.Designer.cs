@@ -12,8 +12,8 @@ using Todo_Api.Data;
 namespace Todo_Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250728091256_mig-28-07-25-12-13")]
-    partial class mig2807251213
+    [Migration("20250729072725_Init_29_07_2025")]
+    partial class Init_29_07_2025
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -32,7 +32,7 @@ namespace Todo_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserLoginDto model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _userManager.FindByNameAsync(model.Username);
 
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
@@ -80,7 +80,7 @@ namespace Todo_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] UserRegisterDto model)
         {
-            var userExist = await _userManager.FindByEmailAsync(model.Email);
+            var userExist = await _userManager.FindByNameAsync(model.Username);
 
             if (userExist != null)
             {
@@ -92,7 +92,6 @@ namespace Todo_Api.Controllers
             AppUser user = new AppUser
             {
                 UserName = model.Username,
-                Email = model.Email,
                 SecurityStamp = new Guid().ToString()
             };
 
@@ -135,7 +134,6 @@ namespace Todo_Api.Controllers
             }
 
             user.UserName = model.Username;
-            user.Email = model.Email;
 
             var result = await _userManager.UpdateAsync(user);
 
