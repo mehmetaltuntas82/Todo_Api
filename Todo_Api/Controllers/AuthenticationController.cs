@@ -88,7 +88,7 @@ namespace Todo_Api.Controllers
             }
 
             Random random = new Random();
-            
+
             AppUser user = new AppUser
             {
                 UserName = model.Username,
