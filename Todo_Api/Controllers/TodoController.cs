@@ -90,8 +90,11 @@ namespace TodoApi.Controllers
             if (userId == null) return Unauthorized();
 
             var todo = await _context.TodoItems.FindAsync(id);
-            if (todo == null || todo.UserId != userId.Value)
+            if (todo == null)
                 return NotFound("Görev bulunamadı.");
+
+            if (todo.UserId != userId.Value)
+                return Forbid("Başkasının todo'su silinmez");
 
             _context.TodoItems.Remove(todo);
             await _context.SaveChangesAsync();
