@@ -94,7 +94,7 @@ namespace TodoApi.Controllers
                 return NotFound("Görev bulunamadı.");
 
             if (todo.UserId != userId.Value)
-                return Forbid("Başkasının todo'su silinmez");
+                return Forbid();
 
             _context.TodoItems.Remove(todo);
             await _context.SaveChangesAsync();
