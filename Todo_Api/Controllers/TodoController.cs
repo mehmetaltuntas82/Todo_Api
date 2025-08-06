@@ -70,8 +70,11 @@ namespace TodoApi.Controllers
             if (userId == null) return Unauthorized();
 
             var todo = await _context.TodoItems.FindAsync(id);
-            if (todo == null || todo.UserId != userId.Value)
+            if (todo == null)
                 return NotFound("Görev bulunamadı.");
+
+            if (todo.UserId != userId.Value)
+                return Forbid();
 
             todo.Title = dto.Title;
             todo.Description = dto.Description;
